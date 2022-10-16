@@ -1,1 +1,1 @@
-web: gunicorn faiza-ml:app
+web: gunicorn app:app
