@@ -62,11 +62,9 @@ class Prediction(Resource):
                     Example("What are Low Vitamin D Symptoms", "Other")
 
                     ]
-
-        recieved_value = request.form.to_dict()
-
-        inputs = [recieved_value['question']]
-
+        
+        inputs = [request.form.get("question")]
+        
         response = co.classify(
             model='medium',
             inputs=inputs,
@@ -86,9 +84,7 @@ class Toxicity(Resource):
     def post(self):
         co = cohere.Client("zICvk7J5i84T4u7DvBbjy9IUnAwXJWdGc4iDrIdh")
 
-        recieved_value = request.form.to_dict()
-
-        inputs = [recieved_value['comment']]
+        inputs = [request.form.get("comment")]
 
         response = co.classify(
             model='cohere-toxicity',
