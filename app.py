@@ -2,8 +2,10 @@ import cohere
 from cohere.classify import Example
 from flask import Flask, request
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 
@@ -77,7 +79,7 @@ class Prediction(Resource):
         return PREDICTION
 
 
-api.add_resource(Prediction, '/prediction/')
+api.add_resource(Prediction, '/prediction')
 
 
 class Toxicity(Resource):
@@ -99,7 +101,7 @@ class Toxicity(Resource):
         return PREDICTION
 
 
-api.add_resource(Toxicity, '/toxic/')
+api.add_resource(Toxicity, '/toxic')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
