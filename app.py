@@ -65,7 +65,7 @@ class Prediction(Resource):
         
         response = co.classify(
             model='medium',
-            input=request.form.get("text"),
+            inputs=request.form.get("text"),
             examples=examples)
 
         PREDICTION = {
@@ -85,7 +85,7 @@ class Toxicity(Resource):
 
         response = co.classify(
             model='cohere-toxicity',
-            input=request.form.get("text"),)
+            inputs=request.form.get("text"),)
 
         PREDICTION = {
             'Prediction': response.classifications[0].prediction
