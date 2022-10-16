@@ -60,14 +60,12 @@ class Prediction(Resource):
                     Example("How to get rid of hiccups?", "Other"),
                     Example("How long does the flu last?", "Other"),
                     Example("What are Low Vitamin D Symptoms", "Other")
-
                     ]
         
-        inputs = [request.form.get("question")]
         
         response = co.classify(
             model='medium',
-            inputs=inputs,
+            input=request.form.get("text"),
             examples=examples)
 
         PREDICTION = {
@@ -84,11 +82,10 @@ class Toxicity(Resource):
     def post(self):
         co = cohere.Client("zICvk7J5i84T4u7DvBbjy9IUnAwXJWdGc4iDrIdh")
 
-        inputs = [request.form.get("comment")]
 
         response = co.classify(
             model='cohere-toxicity',
-            inputs=inputs)
+            input=request.form.get("text"),)
 
         PREDICTION = {
             'Prediction': response.classifications[0].prediction
