@@ -77,7 +77,7 @@ class Prediction(Resource):
         return PREDICTION
 
 
-api.add_resource(Prediction, '/prediction/<string:question>')
+api.add_resource(Prediction, '/prediction/')
 
 
 class Toxicity(Resource):
