@@ -10,7 +10,7 @@ api = Api(app)
 
 
 class Prediction(Resource):
-    def get(self):
+    def post(self):
         co = cohere.Client("zICvk7J5i84T4u7DvBbjy9IUnAwXJWdGc4iDrIdh")
 
         examples = [Example("How many times should exercise in a day", "Fitness"),
@@ -83,7 +83,7 @@ api.add_resource(Prediction, '/prediction')
 
 
 class Toxicity(Resource):
-    def get(self):
+    def post(self):
         co = cohere.Client("zICvk7J5i84T4u7DvBbjy9IUnAwXJWdGc4iDrIdh")
 
         recieved_value = request.form.to_dict()
